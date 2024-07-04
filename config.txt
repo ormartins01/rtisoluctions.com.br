@@ -1,0 +1,25 @@
+nginx.conf
+
+include /etc/nginx/sites-enabled/*.conf;
+
+
+
+
+/etc/nginx/sites-available/rtisoluctions.conf
+
+server {
+        listen 443 ssl;
+
+        server_name rtisoluctions.com.br www.rtisoluctions.com.br;
+
+        root /var/www/rtisoluctions.com.br;
+        index index.html index.htm;
+
+        ssl_certificate /var/www/rtisoluctions.com.br/certs/rtisoluctions.crt;
+        ssl_certificate_key /var/www/rtisoluctions.com.br/certs/rtisoluctions.key;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+}
